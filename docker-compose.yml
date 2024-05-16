@@ -2,21 +2,20 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:14
     container_name: postgres
+    restart: always
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: stocktaking
-      POSTGRES_USER: postres
-      POSTGRES_PASSWORD: postres
+      - POSTGRES_DB=stocktaking
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - pgdata:/var/lib/postgresql/data
 
   hakaton:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: perycreep/hakaton
     container_name: hakaton
     ports:
       - "8080:8080"
@@ -26,3 +25,5 @@ services:
       - DB_URL=jdbc:postgresql://postgres:5432/db_name
       - DB_USERNAME=username
       - DB_PASSWORD=password
+volumes:
+  pgdata:
