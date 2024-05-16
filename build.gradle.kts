@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("org.springframework.boot") version "3.2.4"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
 java {
@@ -27,10 +29,16 @@ dependencies {
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    runtimeOnly("org.flywaydb:flyway-database-postgresql:8.5.5")
-    implementation("org.flywaydb:flyway-core:8.5.5")
+    runtimeOnly("org.flywaydb:flyway-database-postgresql:10.0.0")
+    implementation("org.flywaydb:flyway-core:10.0.0")
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+    archiveFileName.set("stocktaking.jar")
+    archiveVersion.set("1.0.0")
+    mainClass = "app.Main"
 }
