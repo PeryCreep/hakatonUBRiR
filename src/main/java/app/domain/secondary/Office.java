@@ -1,11 +1,11 @@
 package app.domain.secondary;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,12 +14,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "office")
 public class Office {
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uuid", nullable = false, unique = true)
+    @Id
     private UUID uuid;
 
     @Column(name = "name", nullable = false)

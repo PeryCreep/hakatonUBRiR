@@ -1,8 +1,10 @@
 package app.infrastructure.controller;
 
 import app.domain.primary.Technique;
-import app.infrastructure.repository.JpaTechniqueRepository;
+import app.domain.primary.TechniqueDTO;
+import app.infrastructure.service.TechniqueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,43 +13,37 @@ import java.util.List;
 @RequestMapping("/techniques")
 public class TechniqueController {
 
-    private final JpaTechniqueRepository techniqueRepository;
+    private final TechniqueService techniqueService;
 
     @Autowired
-    public TechniqueController(JpaTechniqueRepository techniqueRepository) {
-        this.techniqueRepository = techniqueRepository;
+    public TechniqueController(TechniqueService techniqueService) {
+        this.techniqueService = techniqueService;
     }
 
     @GetMapping
     public List<Technique> getAllTechniques() {
-        return techniqueRepository.getAllTechniques();
+        return techniqueService.getAllTechniques();
     }
 
     @GetMapping("/{uuid}")
     public Technique getTechniqueByUuid(@PathVariable String uuid) {
-        return techniqueRepository.getTechniqueByUuid(uuid);
+        return techniqueService.getTechniqueByUuid(uuid);
     }
 
     @PostMapping
-    public Technique addTechnique(@RequestBody Technique technique) {
-        return techniqueRepository.addTechnique(technique);
+    public ResponseEntity<Technique> addTechnique(@RequestBody Technique technique) {
+        Technique savedTechnique = techniqueService.addTechnique(technique);
+        return ResponseEntity.ok(savedTechnique);
     }
 
-//    @PatchMapping("/{uuid}")
-//    public Technique updateTechnique(@PathVariable String uuid, @RequestBody Technique techniqueDetails) {
-//        Technique technique = techniqueRepository.getTechniqueByUuid(uuid);
-//        technique.setIdentifier(techniqueDetails.getIdentifier());
-//        technique.setWorker(techniqueDetails.getWorker());
-//        technique.setOffice(techniqueDetails.getOffice());
-//        technique.setWorkplace(techniqueDetails.getWorkplace());
-//        technique.setWarehouse(techniqueDetails.getWarehouse());
-//        technique.setCreatedDate(techniqueDetails.getCreatedDate());
-//        technique.setCreatedBy(techniqueDetails.getCreatedBy());
-//        return techniqueRepository.updateTechnique(technique);
-//    }
+    @PutMapping
+    public ResponseEntity<Technique> updateTechnique(@RequestBody Technique technique) {
+        Technique updatedTechnique = techniqueService.updateTechnique(technique);
+        return ResponseEntity.ok(updatedTechnique);
+    }
 
     @DeleteMapping("/{uuid}")
     public void deleteTechnique(@PathVariable String uuid) {
-        techniqueRepository.deleteTechnique(uuid);
+        techniqueService.deleteTechnique(uuid);
     }
 }
