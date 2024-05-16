@@ -1,11 +1,9 @@
 package app.domain.secondary;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-import javax.persistence.*;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 @Table(name = "office")
 public class Office {
 

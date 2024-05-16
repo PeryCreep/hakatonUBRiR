@@ -28,4 +28,8 @@ public class OfficeService implements IOfficeService {
     public Office getWorkplaceByUuid(String uuid) {
         return officeRepository.findByUuid(UUID.fromString(uuid));
     }
+
+    public void createWorkplace(Office office) {
+        officeRepository.save(office);
+    }
 }
