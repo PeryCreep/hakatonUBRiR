@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: stocktaking
+      POSTGRES_USER: postres
+      POSTGRES_PASSWORD: postres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  hakaton:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hakaton
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/db_name
+      - DB_USERNAME=username
+      - DB_PASSWORD=password
