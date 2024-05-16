@@ -10,3 +10,7 @@
 
 ![Диаграмма сущностей и зон ответствености](https://github.com/PeryCreep/hakatonUBRiR/assets/96946167/012020d3-0450-4b3e-81ab-f09d861e0ee6)
 
+# Use cases для разных Actor-ов
+
+![Use Cases Для Пользователей системы](https://github.com/PeryCreep/hakatonUBRiR/assets/96946167/0f556ee8-328e-4c99-8c60-3abc787c6b2b)
+
