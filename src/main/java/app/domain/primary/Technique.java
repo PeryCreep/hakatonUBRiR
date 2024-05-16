@@ -4,6 +4,7 @@ import app.domain.secondary.Office;
 import app.domain.secondary.Warehouse;
 import app.domain.secondary.Worker;
 import app.domain.secondary.Workplace;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "technique")
@@ -27,21 +28,21 @@ public class Technique {
     @Column(name = "identifier", nullable = false, unique = true)
     private String identifier;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "worker_id")
-    private Optional<Worker> worker;
+    private Worker worker;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "office_id")
-    private Optional<Office> office;
+    private Office office;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "workplace_id")
-    private Optional<Workplace> workplace;
+    private Workplace workplace;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "warehouse_id")
-    private Optional<Warehouse> warehouse;
+    private Warehouse warehouse;
 
     @Column(name = "created_date", nullable = false)
     private Date createdDate;

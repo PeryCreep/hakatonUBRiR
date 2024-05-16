@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@EntityScan("app.domain")
+@EntityScan("app.domain.*")
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

@@ -22,7 +22,6 @@ dependencies {
 
     implementation("org.postgresql:postgresql:42.7.3")
     implementation("org.hibernate:hibernate-core:6.5.1.Final")
-    implementation("javax.persistence:javax.persistence-api:2.2")
     compileOnly("org.projectlombok:lombok:1.18.32")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
