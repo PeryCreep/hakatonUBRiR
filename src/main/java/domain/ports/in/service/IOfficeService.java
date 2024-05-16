@@ -1,5 +1,9 @@
 package domain.ports.in.service;
 
+import domain.secondary.Office;
+
+import java.util.List;
+
 public interface IOfficeService {
 
      /**
@@ -7,7 +11,7 @@ public interface IOfficeService {
      * 
      * @return список всех офисов
      */
-    List<Workplace> getAllWorkplaces();
+    List<Office> getAllWorkplaces();
 
     /**
      * Получение информации о конкретном офисе.
@@ -15,5 +19,5 @@ public interface IOfficeService {
      * @param uuid уникальный идентификатор офиса
      * @return информация о рабочем месте
      */
-    Workplace getWorkplaceByUuid(String uuid);
+    Office getWorkplaceByUuid(String uuid);
 }

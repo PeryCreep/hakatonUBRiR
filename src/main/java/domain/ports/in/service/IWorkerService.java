@@ -1,7 +1,7 @@
 package domain.ports.in.service;
 
 import domain.secondary.*;
-
+import java.util.List;
 public interface IWorkerService {
 
     /**
