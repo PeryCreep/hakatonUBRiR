@@ -26,8 +26,8 @@ public class OfficeController {
         return officeService.getWorkplaceByUuid(uuid);
     }
 
-//    @PostMapping("/create")
-//    public void createOffice(@RequestBody Office office) {
-//        officeService.createWorkplace(office);
-//    }
+    @PostMapping("/create")
+    public void createOffice(@RequestBody Office office) {
+        officeService.createWorkplace(office);
+    }
 }

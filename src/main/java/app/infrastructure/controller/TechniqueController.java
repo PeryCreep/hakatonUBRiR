@@ -31,13 +31,15 @@ public class TechniqueController {
     }
 
     @PostMapping
-    public ResponseEntity<Technique> addTechnique(@RequestBody Technique technique) {
+    public ResponseEntity<Technique> addTechnique(@RequestBody TechniqueDTO techniqueDTO) {
+        Technique technique = Technique.convertToEntity(techniqueDTO);
         Technique savedTechnique = techniqueService.addTechnique(technique);
         return ResponseEntity.ok(savedTechnique);
     }
 
     @PutMapping
-    public ResponseEntity<Technique> updateTechnique(@RequestBody Technique technique) {
+    public ResponseEntity<Technique> updateTechnique(@RequestBody TechniqueDTO techniqueDTO) {
+        Technique technique = Technique.convertToEntity(techniqueDTO);
         Technique updatedTechnique = techniqueService.updateTechnique(technique);
         return ResponseEntity.ok(updatedTechnique);
     }

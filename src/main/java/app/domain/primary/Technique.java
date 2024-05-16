@@ -50,4 +50,28 @@ public class Technique {
     @Column(name = "created_by", nullable = false)
     private UUID createdBy;
 
+
+    static public Technique convertToEntity(TechniqueDTO techniqueDTO) {
+        Technique technique = new Technique();
+        technique.setIdentifier(techniqueDTO.getIdentifier());
+        technique.setCreatedDate(techniqueDTO.getCreatedDate());
+        technique.setCreatedBy(techniqueDTO.getCreatedBy());
+
+        // Проверяем наличие UUID и создаем объекты Worker, Office, Workplace и Warehouse
+        if (techniqueDTO.getWorker() != null) {
+
+            technique.setWorker(techniqueDTO.getWorker());
+        }
+        if (techniqueDTO.getOffice() != null) {
+            technique.setOffice(techniqueDTO.getOffice());
+        }
+        if (techniqueDTO.getWorkplace() != null) {
+            technique.setWorkplace(techniqueDTO.getWorkplace());
+        }
+        if (techniqueDTO.getWarehouse() != null) {
+            technique.setWarehouse(techniqueDTO.getWarehouse());
+        }
+
+        return technique;
+    }
 }
